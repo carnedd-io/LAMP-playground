@@ -1,11 +1,19 @@
 version: '3'
 services:
     lamp-pg-apache:
-        image: php:8.0-apache
+        container_name: lamp-pg-apache
+        build: .
         ports:
             - ${PORT}:80
         volumes:
             - '.:/var/www/html'
+        environment:
+            - PORT=${PORT}
+            - DB_HOST=${DB_HOST}
+            - DB_DATABASE=${DB_DATABASE}
+            - DB_USERNAME=${DB_USERNAME}
+            - DB_PASSWORD=${DB_PASSWORD}
+            - FORWARD_DB_PORT=${FORWARD_DB_PORT}
     lamp-pg-mysql:
         image: 'mysql/mysql-server:8.0'
         ports:

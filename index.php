@@ -1,18 +1,11 @@
-<?php echo "hello world" ?>
-
-
-
 <?php
-$servername = "localhost";
-$username = "database";
-$password = "sausages";
 
 // Create connection
-$conn = new mysqli($servername, $username, $password);
+$conn = mysqli_connect(getenv("DB_HOST"),getenv("DB_USERNAME"),getenv("DB_PASSWORD"),getenv("DB_DATABASE"),getenv("FORWARD_DB_PORT"));
 
 // Check connection
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    die("DB Connection failed: " . $conn->connect_error);
 }
-echo "Connected successfully";
+echo "DB Connection Success";
 ?>
