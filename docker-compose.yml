@@ -1,7 +1,6 @@
 version: '3'
 services:
     lamp-pg-apache:
-        container_name: lamp-pg-apache
         build: .
         ports:
             - ${PORT}:80
